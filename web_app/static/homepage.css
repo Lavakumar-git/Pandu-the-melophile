@@ -1,0 +1,350 @@
+/* =========================
+   RESET
+========================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family:
+    Segoe UI,
+    sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #000;
+  color: #fff;
+
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+header {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  flex-wrap: wrap;
+
+  gap: 20px;
+
+  padding: 20px 40px;
+
+  background: #0a0a0a;
+
+  border-bottom: 1px solid #1f1f1f;
+}
+
+/* =========================
+   LOGO
+========================= */
+
+.logo {
+  font-size: 2.2rem;
+
+  font-weight: 700;
+
+  color: #00d4ff;
+
+  animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 10px #00d4ff;
+  }
+
+  to {
+    text-shadow:
+      0 0 20px #00d4ff,
+      0 0 40px #00d4ff;
+  }
+}
+
+/* =========================
+   SEARCH
+========================= */
+
+.search-box form {
+  display: flex;
+
+  gap: 10px;
+}
+
+.search-box input {
+  width: 250px;
+
+  padding: 12px 15px;
+
+  border: none;
+
+  outline: none;
+
+  border-radius: 30px;
+
+  background: #111;
+
+  color: white;
+
+  border: 1px solid #222;
+}
+
+.search-box input::placeholder {
+  color: #888;
+}
+
+.search-box button {
+  padding: 12px 18px;
+
+  border: none;
+
+  border-radius: 30px;
+
+  cursor: pointer;
+
+  color: white;
+
+  background: linear-gradient(135deg, #00d4ff, #7c3aed);
+
+  transition: 0.3s;
+}
+
+.search-box button:hover {
+  transform: translateY(-2px);
+}
+
+/* =========================
+   NAVBAR
+========================= */
+
+nav {
+  display: flex;
+
+  gap: 20px;
+}
+
+nav a {
+  text-decoration: none;
+
+  color: white;
+
+  font-weight: 500;
+
+  transition: 0.3s;
+}
+
+nav a:hover {
+  color: #00d4ff;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+  padding: 40px 20px;
+
+  text-align: center;
+}
+
+.hero-text {
+  animation: fadeIn 1s ease;
+}
+
+.hero-text h2 {
+  font-size: 3rem;
+
+  margin-bottom: 10px;
+
+  color: #00d4ff;
+}
+
+.hero-text p {
+  color: #aaa;
+
+  font-size: 1.1rem;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================
+   AUDIO SECTION
+========================= */
+
+.audio-section {
+  flex: 1;
+
+  padding: 20px;
+}
+
+.section-title {
+  text-align: center;
+
+  margin-bottom: 25px;
+
+  color: #00d4ff;
+
+  font-size: 2rem;
+}
+
+/* =========================
+   AUDIO CARD
+========================= */
+
+.audio-box {
+  max-width: 1000px;
+
+  margin: 15px auto;
+
+  background: #111;
+
+  border: 1px solid #222;
+
+  border-radius: 15px;
+
+  padding: 20px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 20px;
+
+  transition: 0.3s;
+}
+
+.audio-box:hover {
+  transform: translateY(-4px);
+
+  border-color: #00d4ff;
+}
+
+.song-name {
+  width: 220px;
+
+  font-size: 18px;
+
+  font-weight: 600;
+}
+
+.audio-box audio {
+  flex: 1;
+}
+
+/* =========================
+   DOWNLOAD BUTTON
+========================= */
+
+.download {
+  text-decoration: none;
+
+  padding: 12px 18px;
+
+  border-radius: 10px;
+
+  color: white;
+
+  background: linear-gradient(135deg, #00d4ff, #7c3aed);
+
+  transition: 0.3s;
+}
+
+.download:hover {
+  transform: scale(1.05);
+}
+
+/* =========================
+   NO AUDIO
+========================= */
+
+.no-results {
+  text-align: center;
+
+  margin-top: 60px;
+
+  color: #888;
+
+  font-size: 1.5rem;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+  text-align: center;
+
+  padding: 20px;
+
+  background: #0a0a0a;
+
+  border-top: 1px solid #1f1f1f;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+
+    text-align: center;
+  }
+
+  nav {
+    flex-wrap: wrap;
+
+    justify-content: center;
+  }
+
+  .audio-box {
+    flex-direction: column;
+
+    text-align: center;
+  }
+
+  .song-name {
+    width: 100%;
+  }
+
+  .audio-box audio {
+    width: 100%;
+  }
+
+  .download {
+    width: 100%;
+
+    text-align: center;
+  }
+
+  .hero-text h2 {
+    font-size: 2rem;
+  }
+
+  .search-box input {
+    width: 180px;
+  }
+}

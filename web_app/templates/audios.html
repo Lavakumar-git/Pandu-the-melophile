@@ -1,0 +1,55 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Audios | Pandu The Melophile</title>
+
+    <link rel="stylesheet" href="{% static 'audios.css' %}" />
+  </head>
+  <body>
+    <header>
+      <h1 class="logo">Pandu The Melophile</h1>
+
+      <nav>
+        <a href="/">Home</a>
+
+        <a href="/audios/">Audios</a>
+
+        <a href="/about/">About</a>
+
+        <a href="/contact/">Contact</a>
+      </nav>
+    </header>
+
+    <section class="audio-section">
+      <h2 class="section-title">All Audios</h2>
+
+      {% if songs %} {% for song in songs %}
+
+      <div class="audio-box">
+        <div class="song-name">{{ song.name }}</div>
+
+        <audio controls>
+          <source src="{{ song.song.url }}" type="audio/mpeg" />
+        </audio>
+
+        <a href="{{ song.song.url }}" download class="download"> Download </a>
+      </div>
+
+      {% endfor %} {% else %}
+
+      <div class="no-results">No Audio Found</div>
+
+      {% endif %}
+    </section>
+
+    <footer>
+      <p>© 2026 Pandu The Melophile</p>
+    </footer>
+  </body>
+</html>

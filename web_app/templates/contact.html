@@ -1,0 +1,49 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Contact | Pandu The Melophile</title>
+
+    <link rel="stylesheet" href="{% static 'contact.css' %}" />
+  </head>
+  <body>
+    <header>
+      <h1 class="logo">Pandu The Melophile</h1>
+
+      <nav>
+        <a href="/">Home</a>
+
+        <a href="/audios/">Audios</a>
+
+        <a href="/about/">About</a>
+
+        <a href="/contact/">Contact</a>
+      </nav>
+    </header>
+
+    <div class="contact-wrapper">
+  <form method="POST">
+    {% csrf_token %}
+
+    <input type="text" name="name" placeholder="Your Name" required />
+    <input type="email" name="email" placeholder="Your Email" required />
+    <textarea name="message" rows="6" placeholder="Your Message" required></textarea>
+
+    <button type="submit">Send Message</button>
+
+    {% if success %}
+      <p class="success">{{ success }}</p>
+    {% endif %}
+  </form>
+</div>
+
+
+    <footer>
+      <p>© 2026 Pandu The Melophile</p>
+    </footer>
+  </body>
+</html>

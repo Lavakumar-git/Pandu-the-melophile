@@ -1,0 +1,90 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Pandu The Melophile</title>
+
+    <link rel="stylesheet" href="{% static 'homepage.css' %}" />
+  </head>
+
+  <body>
+    <header>
+      <h1 class="logo">Pandu The Melophile</h1>
+
+      <!-- SEARCH -->
+
+      <div class="search-box">
+        <form method="GET" action="/">
+          <input
+            type="text"
+            name="q"
+            placeholder="Search Audio..."
+            value="{{ query|default:'' }}"
+          />
+
+          <button type="submit">Search</button>
+        </form>
+      </div>
+
+      <!-- NAVBAR -->
+
+      <nav>
+        <a href="/">Home</a>
+
+        <a href="/audios/">Audios</a>
+
+        <a href="/about/">About</a>
+
+        <a href="/contact/">Contact</a>
+      </nav>
+    </header>
+
+    <!-- HERO SECTION -->
+
+    <section class="hero">
+      <div class="hero-text">
+        <h2>Download Trending BGMs & Audios</h2>
+
+        <p>
+          High quality background music, cinematic audio tracks and trending
+          BGMs.
+        </p>
+      </div>
+    </section>
+
+    <!-- AUDIO SECTION -->
+
+    <section class="audio-section">
+      <h2 class="section-title">
+        {% if query %} Search Results {% else %} Popular Audios {% endif %}
+      </h2>
+
+      {% for song in songs %}
+
+      <div class="audio-box">
+        <h3 class="song-name">{{ song.name }}</h3>
+
+        <audio controls>
+          <source src="{{ song.song.url }}" type="audio/mpeg" />
+        </audio>
+
+        <a href="{{ song.song.url }}" download class="download"> Download </a>
+      </div>
+
+      {% empty %}
+
+      <h2 style="text-align: center">No Audio Found</h2>
+
+      {% endfor %}
+    </section>
+
+    <footer>
+      <p>© 2026 Pandu The Melophile</p>
+    </footer>
+  </body>
+</html>
