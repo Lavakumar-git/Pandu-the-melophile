@@ -11,7 +11,11 @@
 
     <link rel="stylesheet" href="{% static 'about.css' %}" />
   </head>
+
   <body>
+    <div id="page-loader">
+      <div class="loader-spinner"></div>
+    </div>
     <header>
       <h1 class="logo">Pandu The Melophile</h1>
 
@@ -50,5 +54,15 @@
     <footer>
       <p>© 2026 Pandu The Melophile</p>
     </footer>
+
+    <script>
+      document.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", function () {
+          document
+            .getElementById("page-loader")
+            .classList.remove("loader-hidden");
+        });
+      });
+    </script>
   </body>
 </html>

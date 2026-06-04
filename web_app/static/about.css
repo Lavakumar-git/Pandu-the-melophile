@@ -59,11 +59,12 @@ nav a:hover {
   background: #111;
   border: 1px solid #222;
   border-radius: 20px;
-  transition: 0.3s;
-}
+   transition: all 0.3s ease;
 
 .about-card:hover {
   border-color: #00d4ff;
+  transform: translateY(-5px);
+  box-shadow: 0 0 25px rgba(0, 212, 255, 0.25);
 }
 
 .about-card h2 {
@@ -82,4 +83,148 @@ footer {
   padding: 20px;
   background: #0a0a0a;
   border-top: 1px solid #222;
+}
+
+
+/* Loader */
+
+.loader-container {
+    display: none;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba(255,255,255,0.2);
+    border-top: 4px solid #38bdf8;
+    border-radius: 50%;
+    margin: 0 auto 10px;
+    animation: spin 0.8s linear infinite;
+}
+
+.loader-container p {
+    color: #ffffff;
+    font-size: 14px;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Loader */
+
+.loader-container {
+    display: none;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba(255,255,255,0.2);
+    border-top: 4px solid #38bdf8;
+    border-radius: 50%;
+    margin: 0 auto 10px;
+    animation: spin 0.8s linear infinite;
+}
+
+.loader-container p {
+    color: #ffffff;
+    font-size: 14px;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* =========================
+   MOBILE RESPONSIVE
+========================= */
+
+@media (max-width: 768px) {
+
+  header {
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px;
+  }
+
+  .logo {
+    font-size: 1.6rem;
+    text-align: center;
+  }
+
+  nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  nav a {
+    font-size: 0.95rem;
+  }
+
+  .about-section {
+    padding: 30px 15px;
+  }
+
+  .about-card {
+    padding: 25px;
+    border-radius: 15px;
+  }
+
+  .about-card h2 {
+    font-size: 1.8rem;
+    text-align: center;
+  }
+
+  .about-card p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+}
+
+@media (max-width: 480px) {
+
+  .logo {
+    font-size: 1.3rem;
+  }
+
+  nav {
+    gap: 10px;
+  }
+
+  nav a {
+    font-size: 0.85rem;
+  }
+
+  .about-card {
+    padding: 20px;
+  }
+
+  .about-card h2 {
+    font-size: 1.5rem;
+  }
+
+  .about-card p {
+    font-size: 0.9rem;
+  }
+
+  footer {
+    font-size: 0.85rem;
+    padding: 15px;
+  }
 }
