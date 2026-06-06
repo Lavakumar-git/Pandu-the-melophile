@@ -165,75 +165,129 @@ nav a:hover {
   }
 }
 
-/* =========================
-   AUDIO SECTION
-========================= */
-
-.audio-section {
-  flex: 1;
-  padding: 20px;
-}
-
-.section-title {
-  text-align: center;
-  margin-bottom: 35px;
-  color: #00d4ff;
-  font-size: 2rem;
-}
-
-/* =========================
-   AUDIO CARDS
-========================= */
-
 .audio-box {
   max-width: 1000px;
   margin: 20px auto;
-  padding: 20px 25px;
-
-  background: linear-gradient(
-    145deg,
-    rgba(17, 17, 17, 0.95),
-    rgba(25, 25, 25, 0.95)
-  );
-
+  padding: 20px;
+  background: #111;
   border: 1px solid #222;
-  border-radius: 18px;
+  border-radius: 16px;
 
   display: flex;
   align-items: center;
   gap: 20px;
-
-  transition: all 0.3s ease;
-}
-
-.audio-box:hover {
-  transform: translateY(-5px);
-  border-color: #00d4ff;
-  box-shadow: 0 0 25px rgba(0, 212, 255, 0.25);
 }
 
 .song-name {
   min-width: 220px;
-  font-size: 1rem;
   font-weight: 600;
-  color: white;
-
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 .audio-box audio {
   flex: 1;
-  height: 40px;
-  border-radius: 30px;
+  width: 100%;
+  min-width: 0;
 }
+
+.download {
+  padding: 12px 20px;
+  text-decoration: none;
+  color: white;
+  background: linear-gradient(135deg, #00d4ff, #7c3aed);
+  border-radius: 10px;
+}
+
+/* Mobile */
 @media (max-width: 768px) {
-    .audio-box audio {
-        width: 100%;
-        min-width: 100%;
-    }
+
+  .audio-box {
+    align-items:center;
+    gap: 15px;
+    text-align: center;
+  }
+
+  .song-name {
+    order: 1;
+    width: 100%;
+    min-width: auto;
+  }
+
+  .audio-box audio {
+    order: 2;
+    width: 100%;
+    display: block;
+  }
+
+  .download {
+    order: 3;
+    width: 100%;
+    text-align: center;
+  }
 }
+/* =========================
+TABLET RESPONSIVE
+========================= */
+
+@media (max-width: 768px) {
+
+.audio-box {
+flex-direction: column;
+align-items: stretch;
+text-align: center;
+gap: 15px;
+}
+
+.song-name {
+width: 100%;
+min-width: auto;
+}
+
+.audio-box audio {
+width: 100%;
+min-width: 100%;
+display: block;
+}
+
+.download {
+width: 100%;
+text-align: center;
+}
+}
+
+/* =========================
+MOBILE RESPONSIVE
+========================= */
+
+@media (max-width: 480px) {
+
+.audio-section {
+padding: 15px 10px;
+}
+
+.section-title {
+font-size: 1.5rem;
+}
+
+.audio-box {
+padding: 15px;
+gap: 15px;
+}
+
+.song-name {
+font-size: 0.95rem;
+}
+
+.audio-box audio {
+width: 100%;
+min-width: 100%;
+}
+
+.download {
+padding: 10px;
+font-size: 0.9rem;
+}
+}
+
 
 /* =========================
    DOWNLOAD BUTTON
@@ -320,13 +374,24 @@ footer {
     text-align: center;
   }
 
+
+    .audio-box {
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    padding: 15px;
+  }
+
   .song-name {
-    width: 100%;
-    min-width: auto;
+    min-width: 120px;
+    font-size: 0.9rem;
   }
 
   .audio-box audio {
-    width: 100%;
+    flex: 1;
+    width: auto;
+    min-width: 150px;
+    display: block;
   }
 
   .download {
@@ -372,9 +437,6 @@ footer {
     font-size: 0.95rem;
   }
 
-  .section-title {
-    font-size: 1.5rem;
-  }
 
   .audio-section {
     padding: 15px 10px;
@@ -389,10 +451,6 @@ footer {
     font-size: 0.95rem;
   }
 
-  .download {
-    padding: 10px;
-    font-size: 0.9rem;
-  }
 
   footer {
     font-size: 0.85rem;
