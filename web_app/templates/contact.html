@@ -1,74 +1,44 @@
 {% load static %}
-
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <title>About | Pandu The Melophile</title>
-
-    <link rel="stylesheet" href="{% static 'about.css' %}" />
-  </head>
-
-  <body>
-    <div id="page-loader">
-      <div class="loader-spinner"></div>
+<section class="py-5">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h2 class="section-title">Get In Touch</h2>
+      <p class="text-secondary">
+        Feel free to contact me through any of the following platforms.
+      </p>
     </div>
-    <header>
-      <h1 class="logo">Pandu The Melophile</h1>
 
-      <nav>
-        <a href="/">Home</a>
+    <div class="row justify-content-center">
+      <div class="col-lg-6">
+        <div class="contact-info">
+          <div class="contact-item">
+            <h5>Email</h5>
+            <p>yourmail@example.com</p>
+          </div>
 
-        <a href="/audios/">Audios</a>
+          <div class="contact-item">
+            <h5>Phone</h5>
+            <p>+91 XXXXX XXXXX</p>
+          </div>
 
-        <a href="/about/">About</a>
+          <div class="contact-item">
+            <h5>Location</h5>
+            <p>India</p>
+          </div>
 
-        <a href="/contact/">Contact</a>
-      </nav>
-    </header>
+          <div class="contact-item">
+            <h5>GitHub</h5>
+            <a href="#" target="_blank"> github.com/yourusername </a>
+          </div>
 
-    <link rel="stylesheet" href="{% static 'contact.css' %}" />
-
-    <section class="contact-section">
-      <div class="contact-container">
-        <h1>Contact Us</h1>
-
-        <form method="POST">
-          {% csrf_token %}
-
-          <input type="text" name="name" placeholder="Your Name" required />
-          <input type="email" name="email" placeholder="Your Email" required />
-          <textarea
-            name="message"
-            rows="6"
-            placeholder="Your Message"
-            required
-          ></textarea>
-
-          <button type="submit">Send Message</button>
-
-          {% if success %}
-          <p class="success">{{ success }}</p>
-          {% endif %}
-        </form>
+          <div class="contact-item">
+            <h5>LinkedIn</h5>
+            <a href="#" target="_blank"> linkedin.com/in/yourprofile </a>
+          </div>
+        </div>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
 
-    <footer>
-      <p>© 2026 Pandu The Melophile</p>
-    </footer>
 
-    <script>
-      document.querySelectorAll("a").forEach((link) => {
-        link.addEventListener("click", function () {
-          document
-            .getElementById("page-loader")
-            .classList.remove("loader-hidden");
-        });
-      });
-    </script>
-  </body>
-</html>

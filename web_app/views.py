@@ -44,35 +44,4 @@ def about(request):
 
 
 def contact(request):
-    success = None
-
-    if request.method == "POST":
-        name = request.POST.get("name")
-        email = request.POST.get("email")
-        message = request.POST.get("message")
-
-        subject = f"New Contact Form Message from {name}"
-
-        email_message = f"""
-Name: {name}
-Email: {email}
-
-Message:
-{message}
-"""
-
-        try:
-            send_mail(
-                subject,
-                email_message,
-                settings.EMAIL_HOST_USER,
-                [settings.EMAIL_HOST_USER],  # receives email in your Gmail
-                fail_silently=False,
-            )
-
-            success = "Message sent successfully!"
-
-        except Exception as e:
-            success = f"Error sending message: {e}"
-
-    return render(request, "contact.html", {"success": success})
+   return render(request,'contact.html')
