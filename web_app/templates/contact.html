@@ -1,44 +1,78 @@
 {% load static %}
-<section class="py-5">
-  <div class="container">
-    <div class="text-center mb-5">
-      <h2 class="section-title">Get In Touch</h2>
-      <p class="text-secondary">
-        Feel free to contact me through any of the following platforms.
-      </p>
+
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact | Pandu The Melophile</title>
+
+   
+    <link rel="stylesheet" href="{% static 'contact.css' %}" />
+  
+  </head>
+  <body>
+  
+    <div id="page-loader">
+      <div class="loader-spinner"></div>
     </div>
 
-    <div class="row justify-content-center">
-      <div class="col-lg-6">
-        <div class="contact-info">
+    <header>
+      <h1 class="logo">Pandu The Melophile</h1>
+
+      <nav>
+        <a href="/">Home</a>
+        <a href="/audios/">Audios</a>
+        <a href="/about/">About</a>
+        <a href="/contact/">Contact</a>
+      </nav>
+    </header>
+
+    <section class="contact-section">
+      <div class="container">
+        <div class="text-center">
+          <h2 class="section-title">Get In Touch</h2>
+          <p class="section-subtitle">
+            Feel free to contact me through any of the following platforms.
+          </p>
+        </div>
+
+        <div class="contact-wrapper">
           <div class="contact-item">
-            <h5>Email</h5>
-            <p>yourmail@example.com</p>
+            <h3>Email</h3>
+            <p>groovewaveeditz90@egmail.com</p>
+          </div>
+
+            <div class="contact-item">
+            <h3>LinkedIn</h3>
+            <a href="https://www.linkedin.com/in/s-lavakumar-645641318/" target="https://www.linkedin.com/in/s-lavakumar-645641318/"> https://www.linkedin.com/in/s-lavakumar-645641318/</a>
           </div>
 
           <div class="contact-item">
-            <h5>Phone</h5>
-            <p>+91 XXXXX XXXXX</p>
-          </div>
-
-          <div class="contact-item">
-            <h5>Location</h5>
+            <h3>Location</h3>
             <p>India</p>
           </div>
 
-          <div class="contact-item">
-            <h5>GitHub</h5>
-            <a href="#" target="_blank"> github.com/yourusername </a>
-          </div>
-
-          <div class="contact-item">
-            <h5>LinkedIn</h5>
-            <a href="#" target="_blank"> linkedin.com/in/yourprofile </a>
-          </div>
+        
         </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
+    <footer>
+      <p>© 2026 Pandu The Melophile</p>
+    </footer>
 
+    <script>
+      document.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", function () {
+          const loader = document.getElementById("page-loader");
+          if (loader) {
+            loader.classList.remove("loader-hidden");
+          }
+        });
+      });
+    </script>
+    ```
+  </body>
+</html>

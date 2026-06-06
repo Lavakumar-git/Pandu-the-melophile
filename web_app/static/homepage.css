@@ -228,6 +228,12 @@ nav a:hover {
   height: 40px;
   border-radius: 30px;
 }
+@media (max-width: 768px) {
+    .audio-box audio {
+        width: 100%;
+        min-width: 100%;
+    }
+}
 
 /* =========================
    DOWNLOAD BUTTON
