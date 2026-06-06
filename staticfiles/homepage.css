@@ -1,0 +1,395 @@
+/* =========================
+   GLOBAL RESET
+========================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #000;
+  color: #fff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px 40px;
+  background: #0a0a0a;
+  border-bottom: 1px solid #1f1f1f;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+/* =========================
+   LOGO
+========================= */
+
+.logo {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #00d4ff;
+  animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 10px #00d4ff;
+  }
+
+  to {
+    text-shadow:
+      0 0 20px #00d4ff,
+      0 0 40px #00d4ff;
+  }
+}
+
+/* =========================
+   SEARCH BOX
+========================= */
+
+.search-box form {
+  display: flex;
+  gap: 10px;
+}
+
+.search-box input {
+  width: 260px;
+  padding: 12px 15px;
+  border: 1px solid #222;
+  border-radius: 30px;
+  outline: none;
+  background: #111;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.search-box input:focus {
+  border-color: #00d4ff;
+  box-shadow: 0 0 12px rgba(0, 212, 255, 0.3);
+}
+
+.search-box input::placeholder {
+  color: #888;
+}
+
+.search-box button {
+  padding: 12px 18px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  color: white;
+  font-weight: 600;
+  background: linear-gradient(135deg, #00d4ff, #7c3aed);
+  transition: all 0.3s ease;
+}
+
+.search-box button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 15px rgba(0, 212, 255, 0.35);
+}
+
+/* =========================
+   NAVBAR
+========================= */
+
+nav {
+  display: flex;
+  gap: 20px;
+}
+
+nav a {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+nav a:hover {
+  color: #00d4ff;
+}
+
+/* =========================
+   HERO SECTION
+========================= */
+
+.hero {
+  padding: 80px 20px 60px;
+  text-align: center;
+}
+
+.hero-text {
+  animation: fadeIn 1s ease;
+}
+
+.hero-text h2 {
+  font-size: 3.2rem;
+  margin-bottom: 15px;
+  color: #00d4ff;
+}
+
+.hero-text p {
+  color: #bdbdbd;
+  font-size: 1.1rem;
+  max-width: 700px;
+  margin: auto;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================
+   AUDIO SECTION
+========================= */
+
+.audio-section {
+  flex: 1;
+  padding: 20px;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 35px;
+  color: #00d4ff;
+  font-size: 2rem;
+}
+
+/* =========================
+   AUDIO CARDS
+========================= */
+
+.audio-box {
+  max-width: 1000px;
+  margin: 20px auto;
+  padding: 20px 25px;
+
+  background: linear-gradient(
+    145deg,
+    rgba(17, 17, 17, 0.95),
+    rgba(25, 25, 25, 0.95)
+  );
+
+  border: 1px solid #222;
+  border-radius: 18px;
+
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+  transition: all 0.3s ease;
+}
+
+.audio-box:hover {
+  transform: translateY(-5px);
+  border-color: #00d4ff;
+  box-shadow: 0 0 25px rgba(0, 212, 255, 0.25);
+}
+
+.song-name {
+  min-width: 220px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: white;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.audio-box audio {
+  flex: 1;
+  height: 40px;
+  border-radius: 30px;
+}
+
+/* =========================
+   DOWNLOAD BUTTON
+========================= */
+
+.download {
+  text-decoration: none;
+  color: white;
+  padding: 12px 20px;
+
+  border-radius: 12px;
+
+  background: linear-gradient(135deg, #00d4ff, #7c3aed);
+
+  font-weight: 600;
+
+  transition: all 0.3s ease;
+}
+
+.download:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 15px rgba(0, 212, 255, 0.45);
+}
+
+/* =========================
+   NO AUDIO FOUND
+========================= */
+
+.no-results {
+  text-align: center;
+  margin-top: 60px;
+  color: #888;
+  font-size: 1.5rem;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #0a0a0a;
+  border-top: 1px solid #1f1f1f;
+  margin-top: auto;
+}
+
+/* =========================
+   TABLET RESPONSIVE
+========================= */
+
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    text-align: center;
+    padding: 15px;
+  }
+
+  .logo {
+    font-size: 1.7rem;
+  }
+
+  nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .search-box {
+    width: 100%;
+  }
+
+  .search-box form {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .search-box input {
+    width: 100%;
+  }
+
+  .audio-box {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .song-name {
+    width: 100%;
+    min-width: auto;
+  }
+
+  .audio-box audio {
+    width: 100%;
+  }
+
+  .download {
+    width: 100%;
+    text-align: center;
+  }
+
+  .hero-text h2 {
+    font-size: 2.2rem;
+  }
+
+  .hero-text p {
+    font-size: 1rem;
+  }
+}
+
+/* =========================
+   MOBILE RESPONSIVE
+========================= */
+
+@media (max-width: 480px) {
+  .logo {
+    font-size: 1.4rem;
+  }
+
+  nav {
+    gap: 12px;
+  }
+
+  nav a {
+    font-size: 0.9rem;
+  }
+
+  .hero {
+    padding: 50px 15px;
+  }
+
+  .hero-text h2 {
+    font-size: 1.8rem;
+  }
+
+  .hero-text p {
+    font-size: 0.95rem;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+  .audio-section {
+    padding: 15px 10px;
+  }
+
+  .audio-box {
+    padding: 15px;
+    gap: 15px;
+  }
+
+  .song-name {
+    font-size: 0.95rem;
+  }
+
+  .download {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+
+  footer {
+    font-size: 0.85rem;
+    padding: 15px;
+  }
+}
