@@ -291,16 +291,6 @@ footer {
     font-size: 1rem;
   }
 
-  /* AUDIO CARD */
-
-  .audio-box {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 15px;
-    text-align: center;
-    padding: 15px;
-  }
 
   /* 1. SONG NAME */
 
@@ -312,15 +302,20 @@ footer {
     word-break: break-word;
   }
 
-  /* 2. AUDIO PLAYER */
+    .audio-box {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 15px;
+    }
 
-  .audio-box audio {
-    width: 100%;
-    min-width: unset;
-    display: block;
-    order: 2;
-  }
-
+    .audio-box audio {
+        width: 100%;
+        height: 54px;
+        display: block;
+        margin: 10px 0;
+    }
+}
   /* 3. DOWNLOAD BUTTON */
 
   .download {
@@ -337,6 +332,20 @@ footer {
 
 @media (max-width: 480px) {
 
+      .audio-box {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 15px;
+    }
+
+    .audio-box audio {
+        width: 100%;
+        height: 54px;
+        display: block;
+        margin: 10px 0;
+    }
+}
   .logo {
     font-size: 1.4rem;
   }
