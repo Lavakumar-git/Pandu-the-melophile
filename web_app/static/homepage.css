@@ -197,97 +197,6 @@ nav a:hover {
   border-radius: 10px;
 }
 
-/* Mobile */
-@media (max-width: 768px) {
-
-  .audio-box {
-    align-items:center;
-    gap: 15px;
-    text-align: center;
-  }
-
-  .song-name {
-    order: 1;
-    width: 100%;
-    min-width: auto;
-  }
-
-  .audio-box audio {
-    order: 2;
-    width: 100%;
-    display: block;
-  }
-
-  .download {
-    order: 3;
-    width: 100%;
-    text-align: center;
-  }
-}
-/* =========================
-TABLET RESPONSIVE
-========================= */
-
-@media (max-width: 768px) {
-
-.audio-box {
-flex-direction: column;
-align-items: stretch;
-text-align: center;
-gap: 15px;
-}
-
-.song-name {
-width: 100%;
-min-width: auto;
-}
-
-.audio-box audio {
-width: 100%;
-min-width: 100%;
-display: block;
-}
-
-.download {
-width: 100%;
-text-align: center;
-}
-}
-
-/* =========================
-MOBILE RESPONSIVE
-========================= */
-
-@media (max-width: 480px) {
-
-.audio-section {
-padding: 15px 10px;
-}
-
-.section-title {
-font-size: 1.5rem;
-}
-
-.audio-box {
-padding: 15px;
-gap: 15px;
-}
-
-.song-name {
-font-size: 0.95rem;
-}
-
-.audio-box audio {
-width: 100%;
-min-width: 100%;
-}
-
-.download {
-padding: 10px;
-font-size: 0.9rem;
-}
-}
-
 
 /* =========================
    DOWNLOAD BUTTON
@@ -340,19 +249,20 @@ footer {
 ========================= */
 
 @media (max-width: 768px) {
+
   header {
     flex-direction: column;
-    text-align: center;
     padding: 15px;
+    text-align: center;
   }
 
   .logo {
-    font-size: 1.7rem;
+    font-size: 1.8rem;
   }
 
   nav {
-    flex-wrap: wrap;
     justify-content: center;
+    flex-wrap: wrap;
     gap: 15px;
   }
 
@@ -369,34 +279,8 @@ footer {
     width: 100%;
   }
 
-  .audio-box {
-    flex-direction: column;
-    text-align: center;
-  }
-
-
-    .audio-box {
-    flex-direction: row;
-    align-items: center;
-    gap: 10px;
-    padding: 15px;
-  }
-
-  .song-name {
-    min-width: 120px;
-    font-size: 0.9rem;
-  }
-
-  .audio-box audio {
-    flex: 1;
-    width: auto;
-    min-width: 150px;
-    display: block;
-  }
-
-  .download {
-    width: 100%;
-    text-align: center;
+  .hero {
+    padding: 50px 15px;
   }
 
   .hero-text h2 {
@@ -406,6 +290,45 @@ footer {
   .hero-text p {
     font-size: 1rem;
   }
+
+  /* AUDIO CARD */
+
+  .audio-box {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 15px;
+    text-align: center;
+    padding: 15px;
+  }
+
+  /* 1. SONG NAME */
+
+  .song-name {
+    width: 100%;
+    min-width: unset;
+    order: 1;
+    white-space: normal;
+    word-break: break-word;
+  }
+
+  /* 2. AUDIO PLAYER */
+
+  .audio-box audio {
+    width: 100%;
+    min-width: unset;
+    display: block;
+    order: 2;
+  }
+
+  /* 3. DOWNLOAD BUTTON */
+
+  .download {
+    width: 100%;
+    text-align: center;
+    display: block;
+    order: 3;
+  }
 }
 
 /* =========================
@@ -413,20 +336,17 @@ footer {
 ========================= */
 
 @media (max-width: 480px) {
+
   .logo {
     font-size: 1.4rem;
   }
 
   nav {
-    gap: 12px;
+    gap: 10px;
   }
 
   nav a {
     font-size: 0.9rem;
-  }
-
-  .hero {
-    padding: 50px 15px;
   }
 
   .hero-text h2 {
@@ -437,23 +357,11 @@ footer {
     font-size: 0.95rem;
   }
 
-
-  .audio-section {
-    padding: 15px 10px;
-  }
-
   .audio-box {
-    padding: 15px;
-    gap: 15px;
+    padding: 12px;
   }
-
-  .song-name {
-    font-size: 0.95rem;
-  }
-
 
   footer {
-    font-size: 0.85rem;
-    padding: 15px;
+    font-size: 0.9rem;
   }
 }
