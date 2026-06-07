@@ -153,11 +153,9 @@ nav a:hover {
   max-width: 1000px;
   margin: 20px auto;
   padding: 20px;
-
   background: #111;
   border: 1px solid #222;
   border-radius: 16px;
-
   display: flex;
   align-items: center;
   gap: 20px;
@@ -211,7 +209,7 @@ footer {
    TABLET & MOBILE
 ========================= */
 
-@media (max-width: 768px) {
+@media (max-width: 300px) {
   header {
     flex-direction: column;
     text-align: center;
@@ -251,9 +249,12 @@ footer {
   /* MOBILE AUDIO CARD */
 
   .audio-box {
+    height:fit-content;
+    width: 100%;
     display: flex;
-    flex-direction: column;
-    align-items: stretch;
+    flex-direction: column !important;
+    justify-content: center;
+    align-items: center;
     gap: 15px;
     text-align: center;
   }
@@ -263,11 +264,11 @@ footer {
     width: 100%;
   }
 
-  .audio-box audio {
-    width: 100%;
-    min-width: 0;
-    display: block;
-  }
+.audio-box audio { 
+  flex-basis: auto;
+  height: 54px;
+  min-height: 54px;
+}
 
   .download {
     width: 100%;
@@ -301,7 +302,14 @@ footer {
   }
 
   .audio-box {
-    padding: 15px;
+    height: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    text-align: center;
   }
 
   footer {
