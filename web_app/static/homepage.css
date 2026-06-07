@@ -1,318 +1,124 @@
-/* =========================
-   GLOBAL RESET
-========================= */
-
+/* --- Global Reset for Box Sizing --- */
 * {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
-  font-family: "Segoe UI", sans-serif;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  background: #000;
-  color: #fff;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-/* =========================
-   HEADER
-========================= */
-
+/* --- Header & Navigation --- */
 header {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
-  gap: 20px;
-  padding: 20px 40px;
-  background: #0a0a0a;
-  border-bottom: 1px solid #1f1f1f;
+  padding: 15px;
+  gap: 15px;
+  text-align: center;
+  background-color: #0a0a0a;
+  color: #fff;
 }
-
-/* =========================
-   LOGO
-========================= */
 
 .logo {
-  font-size: 2.2rem;
-  font-weight: 700;
+  margin: 0;
+  font-size: 1.8rem;
   color: #00d4ff;
-  animation: glow 2s infinite alternate;
+  text-decoration: none;
 }
 
-@keyframes glow {
-  from {
-    text-shadow: 0 0 10px #00d4ff;
-  }
-
-  to {
-    text-shadow: 0 0 20px #00d4ff;
-  }
+.search-box {
+  width: 100%;
+  max-width: 400px;
 }
-
-/* =========================
-   SEARCH BOX
-========================= */
 
 .search-box form {
   display: flex;
-  gap: 10px;
+  width: 100%;
+  gap: 5px;
 }
-
-.search-box input {
-  width: 260px;
-  padding: 12px 15px;
-  border: 1px solid #222;
-  border-radius: 30px;
-  background: #111;
-  color: #fff;
-  outline: none;
-}
-
-.search-box input:focus {
-  border-color: #00d4ff;
-}
-
-.search-box button {
-  padding: 12px 18px;
-  border: none;
-  border-radius: 30px;
-  cursor: pointer;
-  color: white;
-  font-weight: 600;
-  background: linear-gradient(135deg, #00d4ff, #7c3aed);
-}
-
-/* =========================
-   NAVBAR
-========================= */
 
 nav {
   display: flex;
-  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
 }
 
 nav a {
+  display: inline-block;
+  padding: 8px 12px;
+  background-color: #f0f0f0;
+  color: #333;
   text-decoration: none;
-  color: white;
-  transition: 0.3s;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease;
 }
 
 nav a:hover {
-  color: #00d4ff;
+  background-color: #e0e0e0;
 }
 
-/* =========================
-   HERO
-========================= */
-
-.hero {
-  padding: 80px 20px 60px;
-  text-align: center;
-}
-
-.hero-text h2 {
-  color: #00d4ff;
-  font-size: 3rem;
-  margin-bottom: 15px;
-}
-
-.hero-text p {
-  color: #bbb;
-  max-width: 700px;
-  margin: auto;
-}
-
-/* =========================
-   AUDIO SECTION
-========================= */
-
+/* --- Audio Section --- */
 .audio-section {
-  flex: 1;
-  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 15px;
 }
 
 .section-title {
+  font-size: clamp(1.5rem, 5vw, 2.5rem); /* Responsive fluid font size */
   text-align: center;
-  color: #00d4ff;
-  margin-bottom: 30px;
-  font-size: 2rem;
+  margin-bottom: 20px;
 }
 
-/* =========================
-   AUDIO CARD
-========================= */
-
 .audio-box {
-  max-width: 1000px;
-  margin: 20px auto;
-  padding: 20px;
-  background: #111;
-  border: 1px solid #222;
-  border-radius: 16px;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 20px;
+  width: 100%;
+  max-width: 600px;
+  padding: 20px;
+  margin: 20px 0;
+  gap: 15px;
+  background-color: #111;
+  border-radius: 16px;
 }
 
 .song-name {
-  min-width: 220px;
-  font-weight: 600;
+  width: 100%;
+  text-align: center;
+  margin: 0;
+  font-size: 1.1rem;
 }
 
 .audio-box audio {
-  flex: 1;
   width: 100%;
-  min-width: 200px;
-  display: block;
+  height: 54px; /* Ensures the player is visible */
 }
 
 .download {
-  text-decoration: none;
-  color: white;
+  display: block;
+  width: 100%;
   padding: 12px 20px;
+  text-align: center;
+  background-color: #333; /* Example button color */
+  color: white;
+  text-decoration: none;
   border-radius: 12px;
-  background: linear-gradient(135deg, #00d4ff, #7c3aed);
-  font-weight: 600;
-  text-align: center;
+  transition: opacity 0.3s;
 }
 
-/* =========================
-   NO RESULTS
-========================= */
-
-.no-results {
-  text-align: center;
-  color: #888;
-  font-size: 1.5rem;
-  margin-top: 50px;
+.download:hover {
+  opacity: 0.8;
 }
 
-/* =========================
-   FOOTER
-========================= */
-
-footer {
-  text-align: center;
-  padding: 20px;
-  background: #0a0a0a;
-  border-top: 1px solid #1f1f1f;
-}
-
-/* =========================
-   TABLET & MOBILE
-========================= */
-
-@media (max-width: 300px) {
-  header {
-    flex-direction: column;
-    text-align: center;
-    padding: 15px;
-  }
-
-  .logo {
-    font-size: 1.8rem;
-  }
-
-  nav {
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-
-  .search-box {
-    width: 100%;
-  }
-
-  .search-box form {
-    flex-direction: column;
-  }
-
-  .search-box input,
-  .search-box button {
-    width: 100%;
-  }
-
-  .hero {
-    padding: 50px 15px;
-  }
-
-  .hero-text h2 {
-    font-size: 2rem;
-  }
-
-  /* MOBILE AUDIO CARD */
-
-  .audio-box {
-    height:fit-content;
-    width: 100%;
-    display: flex;
-    flex-direction: column !important;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-    text-align: center;
-  }
-
-  .song-name {
-    min-width: 0;
-    width: 100%;
-  }
-
-.audio-box audio { 
-  flex-basis: auto;
-  height: 54px;
-  min-height: 54px;
-}
-
-  .download {
-    width: 100%;
-    display: block;
-  }
-}
-
-/* =========================
-   SMALL MOBILE
-========================= */
-
+/* --- Mobile Specific Tweaks --- */
 @media (max-width: 480px) {
   .logo {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
   }
-
+  
   nav a {
-    font-size: 0.9rem;
-  }
-
-  .hero-text h2 {
-    font-size: 1.7rem;
-  }
-
-  .hero-text p {
-    font-size: 0.95rem;
-  }
-
-  .audio-section {
-    padding: 15px 10px;
-  }
-
-  .audio-box {
-    height: auto;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-    text-align: center;
-  }
-
-  footer {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
+    padding: 6px 10px;
   }
 }
