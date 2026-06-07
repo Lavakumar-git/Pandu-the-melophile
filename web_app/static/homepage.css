@@ -14,26 +14,35 @@ html {
 }
 
 body {
-  background: #000;
-  color: #fff;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+    background: #000;
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+
+    padding-top: 110px;
 }
 
 /* =========================
    HEADER
 ========================= */
-
 header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 20px;
+
   padding: 20px 40px;
+
   background: #0a0a0a;
   border-bottom: 1px solid #1f1f1f;
-  flex-wrap: wrap;
+
+  z-index: 1000;
 }
 
 .logo {
@@ -197,12 +206,16 @@ footer {
 ========================= */
 
 @media (max-width: 768px) {
-  header {
-    flex-direction: column;
-    text-align: center;
-    padding: 20px;
-  }
+   header {
+        flex-direction: column;
+        text-align: center;
+        padding: 15px;
+    }
 
+    body {
+        padding-top: 180px;
+    }
+}
   .search-box {
     width: 100%;
   }
