@@ -72,16 +72,31 @@
       <div class="audio-box">
         <h3 class="song-name">{{ song.name }}</h3>
 
-        <audio controls>
+        <!-- Desktop Audio Player -->
+        <audio controls class="desktop-audio">
           <source src="{{ song.song.url }}" type="audio/mpeg" />
         </audio>
 
+        <!-- Mobile Hidden Audio -->
+        <audio id="audio{{ forloop.counter }}" class="mobile-audio">
+          <source src="{{ song.song.url }}" type="audio/mpeg" />
+        </audio>
+
+        <!-- Mobile Play Button -->
+        <button
+          class="play-btn"
+          onclick="toggleAudio('audio{{ forloop.counter }}', this)"
+        >
+          ▶ Play
+        </button>
+
+        <!-- Download Button -->
         <a href="{{ song.song.url }}" download class="download"> Download </a>
       </div>
 
       {% empty %}
 
-      <h2 style="text-align: center">No Audio Found</h2>
+      <div class="no-results">No Audio Found</div>
 
       {% endfor %}
     </section>
@@ -97,6 +112,43 @@
             .classList.remove("loader-hidden");
         });
       });
+    </script>
+    <script>
+      let currentAudio = null;
+      let currentButton = null;
+
+      function toggleAudio(audioId, btn) {
+        const audio = document.getElementById(audioId);
+
+        if (currentAudio && currentAudio !== audio) {
+          currentAudio.pause();
+          currentAudio.currentTime = 0;
+
+          if (currentButton) {
+            currentButton.textContent = "▶ Play";
+          }
+        }
+
+        if (audio.paused) {
+          audio.play();
+          btn.textContent = "⏸ Pause";
+
+          currentAudio = audio;
+          currentButton = btn;
+        } else {
+          audio.pause();
+          btn.textContent = "▶ Play";
+
+          currentAudio = null;
+          currentButton = null;
+        }
+
+        audio.onended = function () {
+          btn.textContent = "▶ Play";
+          currentAudio = null;
+          currentButton = null;
+        };
+      }
     </script>
   </body>
 </html>

@@ -9,18 +9,6 @@
   font-family: "Segoe UI", sans-serif;
 }
 
-/* --- Header & Navigation --- */
-header {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding: 30px;
-  gap: 15px;
-  text-align: center;
-  background-color: #0a0a0a;
-  color: #fff;
-}
-
 html {
   scroll-behavior: smooth;
 }
@@ -45,6 +33,7 @@ header {
   padding: 20px 40px;
   background: #0a0a0a;
   border-bottom: 1px solid #1f1f1f;
+  flex-wrap: wrap;
 }
 
 .logo {
@@ -58,14 +47,13 @@ header {
   from {
     text-shadow: 0 0 10px #00d4ff;
   }
-
   to {
     text-shadow: 0 0 20px #00d4ff;
   }
 }
 
 /* =========================
-   SEARCH BOX
+   SEARCH
 ========================= */
 
 .search-box form {
@@ -83,10 +71,6 @@ header {
   outline: none;
 }
 
-.search-box input:focus {
-  border-color: #00d4ff;
-}
-
 .search-box button {
   padding: 12px 18px;
   border: none;
@@ -96,7 +80,6 @@ header {
   font-weight: 600;
   background: linear-gradient(135deg, #00d4ff, #7c3aed);
 }
-
 
 /* =========================
    NAVBAR
@@ -110,7 +93,6 @@ nav {
 nav a {
   text-decoration: none;
   color: white;
-  transition: 0.3s;
 }
 
 nav a:hover {
@@ -124,12 +106,11 @@ nav a:hover {
 .hero {
   padding: 80px 20px 60px;
   text-align: center;
-  background-color: #000000;
 }
 
 .hero-text h2 {
-  color: #00d4ff;
   font-size: 3rem;
+  color: #00d4ff;
   margin-bottom: 15px;
 }
 
@@ -137,15 +118,32 @@ nav a:hover {
   color: #bbb;
   max-width: 700px;
   margin: auto;
-  text-align: center;
 }
 
-/* --- Audio Section --- */
+/* =========================
+   AUDIO SECTION
+========================= */
+
+.audio-section {
+  width: 100%;
+  padding: 20px;
+}
+
+.section-title {
+  text-align: center;
+  color: #00d4ff;
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+}
+
+/* =========================
+   AUDIO CARD
+========================= */
+
 .audio-box {
   max-width: 1000px;
   margin: 20px auto;
   padding: 20px;
-
   background: #111;
   border: 1px solid #222;
   border-radius: 16px;
@@ -160,11 +158,16 @@ nav a:hover {
   font-weight: 600;
 }
 
-.audio-box audio {
+.desktop-audio {
   flex: 1;
-  width: 100%;
-  min-width: 200px;
-  display: block;
+}
+
+.mobile-audio {
+  display: none;
+}
+
+.play-btn {
+  display: none;
 }
 
 .download {
@@ -174,8 +177,9 @@ nav a:hover {
   border-radius: 12px;
   background: linear-gradient(135deg, #00d4ff, #7c3aed);
   font-weight: 600;
-  text-align: center;
+  white-space: nowrap;
 }
+
 /* =========================
    FOOTER
 ========================= */
@@ -185,83 +189,105 @@ footer {
   padding: 20px;
   background: #0a0a0a;
   border-top: 1px solid #1f1f1f;
+  margin-top: auto;
 }
 
 /* =========================
-   NO RESULTS
+   MOBILE
 ========================= */
 
-.no-results {
-  text-align: center;
-  color: #888;
-  font-size: 1.5rem;
-  margin-top: 50px;
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .search-box {
+    width: 100%;
+  }
+
+  .search-box form {
+    flex-direction: column;
+  }
+
+  .search-box input {
+    width: 100%;
+  }
+
+  nav {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .hero-text h2 {
+    font-size: 2rem;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .audio-box {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 15px;
+  }
+
+  .song-name {
+    width: 100%;
+    min-width: unset;
+    order: 1;
+  }
+
+  .desktop-audio {
+    display: none;
+  }
+
+  .mobile-audio {
+    display: none;
+  }
+
+  .play-btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #00d4ff, #7c3aed);
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    order: 2;
+  }
+
+  .download {
+    width: 100%;
+    text-align: center;
+    order: 3;
+  }
 }
 
+/* =========================
+   SMALL MOBILE
+========================= */
 
-/* --- Mobile Specific Tweaks --- */
 @media (max-width: 480px) {
   .logo {
     font-size: 1.5rem;
   }
-  
-  nav a {
-    font-size: 0.8rem;
-    padding: 6px 10px;
+
+  .hero-text h2 {
+    font-size: 1.8rem;
   }
 
-.audio-section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px 15px;
-}
+  .hero-text p {
+    font-size: 0.95rem;
+  }
 
-.section-title {
-  font-size: clamp(1.5rem, 5vw, 2.5rem); /* Responsive fluid font size */
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.audio-box {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  max-width: 600px;
-  padding: 20px;
-  margin: 20px 0;
-  gap: 15px;
-  background-color: #111;
-  border-radius: 16px;
-}
-
-.song-name {
-  width: 100%;
-  text-align: center;
-  margin: 0;
-  font-size: 1.1rem;
-  color: #00d4ff;
-}
-
-.audio-box audio {
-  width: 100%;
-  height: 54px; /* Ensures the player is visible */
-}
-
-.download {
-  display: block;
-  width: 100%;
-  padding: 12px 20px;
-  text-align: center;
-  background-color: #333; /* Example button color */
-  color: white;
-  text-decoration: none;
-  border-radius: 12px;
-  transition: opacity 0.3s;
-}
-
-.download:hover {
-  opacity: 0.8;
-}
+  nav a {
+    font-size: 0.9rem;
+  }
 }
