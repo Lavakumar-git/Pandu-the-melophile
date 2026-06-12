@@ -2,68 +2,99 @@
 
 <!doctype html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <title>Audios | Pandu The Melophile</title>
+    <title>Audios - Pandu The Melophile</title>
 
     <link rel="stylesheet" href="{% static 'audios.css' %}" />
-  </head>
 
-  <body>
-    <div id="page-loader">
-      <div class="loader-spinner"></div>
-    </div>
-    <header>
-      <h1 class="logo">Pandu The Melophile</h1>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      rel="stylesheet"
+    />
+</head>
+<body>
 
-      <nav>
+<header>
+    <div class="logo">🎵 Pandu The Melophile</div>
+
+    <nav>
         <a href="/">Home</a>
-
         <a href="/audios/">Audios</a>
-
         <a href="/about/">About</a>
-
         <a href="/contact/">Contact</a>
-      </nav>
-    </header>
+    </nav>
+</header>
 
-    <section class="audio-section">
-      <h2 class="section-title">All Audios</h2>
+<section class="hero">
+    <h1>All Songs</h1>
+    <p>Listen to your favorite tracks anytime.</p>
+</section>
 
-      {% if songs %} {% for song in songs %}
+<section class="audio-section">
+    <div class="audio-grid">
+        {% for song in songs %}
+        <div class="audio-card">
+            {% if song.cover %}
+            <img
+                src="{{ song.cover.url }}"
+                alt="{{ song.name }}"
+                class="cover-image"
+            />
+            {% else %}
+            <div class="no-cover">🎵</div>
+            {% endif %}
 
-      <div class="audio-box">
-        <div class="song-name">{{ song.name }}</div>
+            <div class="audio-content">
+                <h3>{{ song.name }}</h3>
 
-        <audio controls>
-          <source src="{{ song.song.url }}" type="audio/mpeg" />
-        </audio>
+                <p class="artist">
+                    {% if song.artist %}{{ song.artist }}{% else %}Unknown Artist{% endif %}
+                </p>
+            </div>
 
-        <a href="{{ song.song.url }}" download class="download"> Download </a>
-      </div>
+            <div class="player-wrapper">
+                <audio controls>
+                    <source src="{{ song.song.url }}" type="audio/mpeg">
+                </audio>
+            </div>
 
-      {% endfor %} {% else %}
+            <div class="metadata-section">
+                {% if song.category %}
+                <span class="badge">{{ song.category }}</span>
+                {% endif %}
+            </div>
 
-      <div class="no-results">No Audio Found</div>
+            <div class="action-buttons">
+                <button class="play-btn" onclick="document.getElementById('player-{{ forloop.counter }}').play()">
+                    <i class="fas fa-play"></i>
+                </button>
+                <button class="pause-btn" onclick="document.getElementById('player-{{ forloop.counter }}').pause()">
+                    <i class="fas fa-pause"></i>
+                </button>
+                <a href="{{ song.song.url }}" download class="download-btn">
+                    <i class="fas fa-download"></i>
+                </a>
+            </div>
 
-      {% endif %}
-    </section>
+            <!-- Hidden audio player for mobile play button -->
+            <audio id="player-{{ forloop.counter }}" style="display: none;">
+                <source src="{{ song.song.url }}" type="audio/mpeg">
+            </audio>
+        </div>
+        {% empty %}
+        <div class="empty">
+            <i class="fas fa-music" style="font-size: 3rem; margin-bottom: 20px; color: #00d4ff; display: block;"></i>
+            No songs available.
+        </div>
+        {% endfor %}
+    </div>
+</section>
 
-    <footer>
-      <p>© 2026 Pandu The Melophile</p>
-    </footer>
+<footer>
+    <p>© 2026 Pandu The Melophile | Made with ❤️</p>
+</footer>
 
-    <script>
-      document.querySelectorAll("a").forEach((link) => {
-        link.addEventListener("click", function () {
-          document
-            .getElementById("page-loader")
-            .classList.remove("loader-hidden");
-        });
-      });
-    </script>
-  </body>
+</body>
 </html>

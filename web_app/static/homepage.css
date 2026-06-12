@@ -14,34 +14,30 @@ html {
 }
 
 body {
-    background: #000;
-    color: #fff;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-
-    padding-top: 110px;
+  background: #000;
+  color: #fff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding-top: 110px;
 }
 
 /* =========================
    HEADER
 ========================= */
+
 header {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 20px;
-
   padding: 20px 40px;
-
   background: #0a0a0a;
   border-bottom: 1px solid #1f1f1f;
-
   z-index: 1000;
 }
 
@@ -62,35 +58,6 @@ header {
 }
 
 /* =========================
-   SEARCH
-========================= */
-
-.search-box form {
-  display: flex;
-  gap: 10px;
-}
-
-.search-box input {
-  width: 260px;
-  padding: 12px 15px;
-  border: 1px solid #222;
-  border-radius: 30px;
-  background: #111;
-  color: #fff;
-  outline: none;
-}
-
-.search-box button {
-  padding: 12px 18px;
-  border: none;
-  border-radius: 30px;
-  cursor: pointer;
-  color: white;
-  font-weight: 600;
-  background: linear-gradient(135deg, #00d4ff, #7c3aed);
-}
-
-/* =========================
    NAVBAR
 ========================= */
 
@@ -102,6 +69,7 @@ nav {
 nav a {
   text-decoration: none;
   color: white;
+  transition: 0.3s ease;
 }
 
 nav a:hover {
@@ -109,24 +77,127 @@ nav a:hover {
 }
 
 /* =========================
-   HERO
+   HERO SECTION
 ========================= */
 
 .hero {
   padding: 80px 20px 60px;
   text-align: center;
+  align-items: center;
 }
 
-.hero-text h2 {
+.hero h1 {
   font-size: 3rem;
   color: #00d4ff;
   margin-bottom: 15px;
 }
 
-.hero-text p {
+.hero p {
+  padding: 20px;
   color: #bbb;
-  max-width: 700px;
-  margin: auto;
+  font-size: 1.1rem;
+  text-align: center;
+  align-items: center;
+}
+
+/* =========================
+   SEARCH BOX
+========================= */
+
+.search-box {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.search-box form {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-box input {
+  width: 260px;
+  padding: 12px 15px;
+  border: 1px solid #222;
+  border-radius: 30px;
+  background: #111;
+  color: #fff;
+  outline: none;
+  transition: 0.3s ease;
+}
+
+.search-box input:focus {
+  border-color: #00d4ff;
+  box-shadow: 0 0 10px rgba(0, 212, 255, 0.1);
+}
+
+.search-box button {
+  padding: 12px 18px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  color: white;
+  font-weight: 600;
+  background: linear-gradient(135deg, #00d4ff, #7c3aed);
+  transition: 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-box button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(0, 212, 255, 0.3);
+}
+
+.clear-btn {
+  width: 42px;
+  height: 42px;
+  padding: 0 !important;
+  background: rgba(0, 212, 255, 0.15) !important;
+  border: 1px solid #00d4ff !important;
+}
+
+/* =========================
+   CATEGORIES SECTION
+========================= */
+
+.categories {
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 0 20px;
+}
+
+.categories h2 {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 25px;
+  color: #00d4ff;
+}
+
+.category-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+}
+
+.category-chip {
+  padding: 10px 20px;
+  background: #111;
+  border: 1px solid #333;
+  border-radius: 25px;
+  color: white;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+}
+
+.category-chip:hover {
+  background: linear-gradient(135deg, #00d4ff, #7c3aed);
+  border-color: #00d4ff;
+  transform: scale(1.05);
 }
 
 /* =========================
@@ -134,59 +205,241 @@ nav a:hover {
 ========================= */
 
 .audio-section {
-  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
   padding: 20px;
+  flex: 1;
 }
 
 .section-title {
   text-align: center;
+  margin-bottom: 35px;
+}
+
+.section-title h2 {
+  font-size: 2.2rem;
   color: #00d4ff;
-  font-size: 2.5rem;
-  margin-bottom: 30px;
 }
 
 /* =========================
-   AUDIO CARD
+   AUDIO GRID
 ========================= */
 
-.audio-box {
-  max-width: 1000px;
-  margin: 20px auto;
-  padding: 20px;
+.audio-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 40px;
+}
+
+/* =========================
+   AUDIO CARD / ROW LAYOUT
+========================= */
+
+.audio-card {
   background: #111;
   border: 1px solid #222;
-  border-radius: 16px;
-
+  border-radius: 12px;
+  padding: 12px 14px;
+  transition: all 0.3s ease;
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 12px;
 }
 
-.song-name {
-  min-width: 220px;
-  font-weight: 600;
+.audio-card:hover {
+  border-color: #00d4ff;
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.1);
+  transform: translateX(4px);
 }
 
-.desktop-audio {
+/* Cover Image / Thumbnail */
+.cover-image {
+  width: 60px;
+  height: 60px;
+  min-width: 60px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.no-cover {
+  width: 60px;
+  height: 60px;
+  min-width: 60px;
+  background: linear-gradient(135deg, #1a1a2e, #16213e);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+}
+
+/* Song Info Section */
+.audio-content {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
 }
 
-.mobile-audio {
-  display: none;
+.audio-content h3 {
+  color: #fff;
+  font-size: 0.95rem;
+  margin: 0;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.artist {
+  color: #888;
+  font-size: 0.8rem;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Audio Player */
+.player-wrapper {
+  flex: 1;
+  min-width: 300px;
+}
+
+audio {
+  width: 100%;
+  height: 32px;
+}
+
+/* Metadata Section (Duration, Category) */
+.metadata-section {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 0 0 auto;
+  min-width: auto;
+  align-items: center;
+}
+
+.duration {
+  color: #aaa;
+  font-size: 0.9rem;
+  min-width: 40px;
+  text-align: right;
+}
+
+.badge {
+  background: rgba(0, 212, 255, 0.1);
+  border: 1px solid #00d4ff;
+  color: #00d4ff;
+  padding: 4px 10px;
+  border-radius: 10px;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* Action Buttons Section */
+.action-buttons {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex: 0 0 auto;
 }
 
 .play-btn {
   display: none;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 6px;
+  background: linear-gradient(135deg, #00d4ff, #7c3aed);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
+  white-space: nowrap;
 }
 
-.download {
+.play-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 15px rgba(0, 212, 255, 0.3);
+}
+
+.toggle-play-btn {
+  display: none;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 6px;
+  background: linear-gradient(135deg, #00d4ff, #7c3aed);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
+  white-space: nowrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.toggle-play-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 15px rgba(0, 212, 255, 0.3);
+}
+
+.toggle-play-btn.paused {
+  background: linear-gradient(135deg, #ff6b6b, #ee5a6f);
+}
+
+.pause-btn {
+  display: none;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 6px;
+  background: linear-gradient(135deg, #ff6b6b, #ee5a6f);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
+  white-space: nowrap;
+}
+
+.pause-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 15px rgba(255, 107, 107, 0.3);
+}
+
+.download-btn {
   text-decoration: none;
   color: white;
-  padding: 12px 20px;
-  border-radius: 12px;
+  padding: 8px 12px;
+  border-radius: 6px;
   background: linear-gradient(135deg, #00d4ff, #7c3aed);
   font-weight: 600;
+  font-size: 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: 0.3s ease;
+  border: none;
+  cursor: pointer;
   white-space: nowrap;
+}
+
+.download-btn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 15px rgba(0, 212, 255, 0.3);
+}
+
+/* =========================
+   EMPTY STATE
+========================= */
+
+.empty {
+  text-align: center;
+  padding: 60px 20px;
+  color: #888;
+  font-size: 1.1rem;
 }
 
 /* =========================
@@ -195,29 +448,67 @@ nav a:hover {
 
 footer {
   text-align: center;
-  padding: 20px;
+  padding: 25px;
   background: #0a0a0a;
   border-top: 1px solid #1f1f1f;
   margin-top: auto;
+  color: #aaa;
 }
 
 /* =========================
-   MOBILE
+   RESPONSIVE DESIGN
 ========================= */
 
-@media (max-width: 768px) {
-   header {
-        flex-direction: column;
-        text-align: center;
-        padding: 15px;
-    }
+@media (max-width: 1024px) {
+  .audio-card {
+    flex-wrap: wrap;
+  }
 
-    body {
-        padding-top: 180px;
-    }
+  .metadata-section {
+    gap: 12px;
+    min-width: 200px;
+  }
+
+  .player-wrapper {
+    min-width: 250px;
+  }
+
+  audio {
+    height: 30px;
+  }
 }
-  .search-box {
-    width: 100%;
+
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    text-align: center;
+    padding: 15px;
+  }
+
+  body {
+    padding-top: 180px;
+  }
+
+  .logo {
+    font-size: 1.8rem;
+  }
+
+  .hero {
+    padding: 60px 15px 50px;
+  }
+
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
   }
 
   .search-box form {
@@ -228,79 +519,179 @@ footer {
     width: 100%;
   }
 
-  nav {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .hero-text h2 {
-    font-size: 2rem;
-  }
-
-  .section-title {
-    font-size: 2rem;
-  }
-
-  .audio-box {
+  /* Mobile: List layout with hidden player */
+  .audio-grid {
+    display: flex;
     flex-direction: column;
+    gap: 12px;
+  }
+
+  .audio-card {
+    flex-direction: row;
     align-items: center;
-    text-align: center;
-    gap: 15px;
+    padding: 10px 12px;
   }
 
-  .song-name {
-    width: 100%;
-    min-width: unset;
-    order: 1;
+  .cover-image,
+  .no-cover {
+    width: 60px;
+    height: 60px;
+    min-width: 60px;
   }
 
-  .desktop-audio {
-    display: none;
-  }
-
-  .mobile-audio {
-    display: none;
-  }
-
-  .play-btn {
-    display: block;
-    width: 100%;
-    padding: 12px;
-    border: none;
-    border-radius: 12px;
-    background: linear-gradient(135deg, #00d4ff, #7c3aed);
-    color: white;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    order: 2;
-  }
-
-  .download {
-    width: 100%;
-    text-align: center;
-    order: 3;
-  }
-}
-
-/* =========================
-   SMALL MOBILE
-========================= */
-
-@media (max-width: 480px) {
-  .logo {
-    font-size: 1.5rem;
-  }
-
-  .hero-text h2 {
+  .no-cover {
     font-size: 1.8rem;
   }
 
-  .hero-text p {
+  .audio-content {
+    flex: 1;
+    width: auto;
+    min-width: 0;
+  }
+
+  .audio-content h3 {
+    font-size: 0.95rem;
+    color: #fff;
+  }
+
+  .artist {
+    font-size: 0.8rem;
+    color: #888;
+  }
+
+  /* Hide audio player bar on mobile */
+  .player-wrapper {
+    display: none !important;
+  }
+
+  audio {
+    display: none !important;
+  }
+
+  /* Hide metadata on mobile */
+  .metadata-section {
+    display: none !important;
+  }
+
+  /* Show play button on mobile */
+  .action-buttons {
+    flex: 0 0 auto;
+    gap: 4px;
+  }
+
+  .play-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 10px;
+  }
+
+  .pause-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 10px;
+  }
+
+  .download-btn {
+    padding: 8px 10px;
+    font-size: 0.85rem;
+    width: auto;
+  }
+
+  .section-title h2 {
+    font-size: 1.8rem;
+  }
+
+  .category-container {
+    gap: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  header {
+    padding: 12px 15px;
+  }
+
+  .logo {
+    font-size: 1.4rem;
+  }
+
+  .hero {
+    padding: 60px 15px 40px;
+  }
+
+  .hero h1 {
+    font-size: 1.8rem;
+  }
+
+  .hero p {
     font-size: 0.95rem;
   }
 
+  nav {
+    gap: 10px;
+  }
+
   nav a {
+    font-size: 0.85rem;
+  }
+
+  .search-box input {
+    width: 100%;
+    padding: 10px 12px;
+    font-size: 16px;
+  }
+
+  .search-box button {
+    padding: 10px 14px;
+  }
+
+  .audio-grid {
+    gap: 10px;
+  }
+
+  .audio-card {
+    padding: 8px 10px;
+    gap: 10px;
+  }
+
+  .cover-image,
+  .no-cover {
+    width: 50px;
+    height: 50px;
+    min-width: 50px;
+  }
+
+  .no-cover {
+    font-size: 1.4rem;
+  }
+
+  .audio-content h3 {
     font-size: 0.9rem;
+  }
+
+  .artist {
+    font-size: 0.75rem;
+  }
+
+  .download-btn {
+    padding: 6px 8px;
+    font-size: 0.75rem;
+  }
+
+  .section-title h2 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+  }
+
+  .categories h2 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+  }
+
+  .category-chip {
+    padding: 8px 14px;
+    font-size: 0.8rem;
   }
 }

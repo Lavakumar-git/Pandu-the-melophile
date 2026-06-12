@@ -4,150 +4,143 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <title>Pandu The Melophile</title>
 
     <link rel="stylesheet" href="{% static 'homepage.css' %}" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      rel="stylesheet"
+    />
   </head>
-
   <body>
-    <div id="page-loader">
-      <div class="loader-spinner"></div>
-    </div>
     <header>
-      <h1 class="logo">Pandu The Melophile</h1>
-
-      <!-- SEARCH -->
-
-      <div class="search-box">
-        <form method="GET" action="/">
-          <input
-            type="text"
-            name="q"
-            placeholder="Search Audio..."
-            value="{{ query|default:'' }}"
-          />
-
-          <button type="submit">Search</button>
-        </form>
-      </div>
-
-      <!-- NAVBAR -->
+      <div class="logo">Pandu The Melophile</div>
 
       <nav>
         <a href="/">Home</a>
-
         <a href="/audios/">Audios</a>
-
         <a href="/about/">About</a>
-
         <a href="/contact/">Contact</a>
       </nav>
     </header>
 
-    <!-- HERO SECTION -->
-
     <section class="hero">
-      <div class="hero-text">
-        <h2>Download Trending BGMs & Audios</h2>
+      <h1>Discover Amazing Music</h1>
+      <p>Stream, Download and Enjoy your favorite tracks.</p>
 
-        <p>
-          High quality background music, cinematic audio tracks and trending
-          BGMs.
-        </p>
+      <div class="search-box">
+        <form method="GET" id="search-form">
+          <input
+            type="text"
+            name="q"
+            placeholder="Search songs..."
+            value="{{ query }}"
+            id="search-input"
+          />
+          <button type="submit" class="search-btn">
+            <i class="fas fa-search"></i>
+          </button>
+          <button type="button" class="clear-btn" onclick="document.getElementById('search-input').value = ''; document.getElementById('search-form').reset();" style="display: none;">
+            <i class="fas fa-times"></i>
+          </button>
+        </form>
       </div>
     </section>
 
-    <!-- AUDIO SECTION -->
+    {% if categories %}
+    <section class="categories">
+      <div class="category-container">
+        {% for category in categories %}
+          {% if category %}
+          <a href="/audios/?category={{ category }}" class="category-chip">
+            {{ category }}
+          </a>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </section>
+    {% endif %}
 
     <section class="audio-section">
-      <h2 class="section-title">
-        {% if query %} Search Results {% else %} Popular Audios {% endif %}
-      </h2>
-
-      {% for song in songs %}
-
-      <div class="audio-box">
-        <h3 class="song-name">{{ song.name }}</h3>
-
-        <!-- Desktop Audio Player -->
-        <audio controls class="desktop-audio">
-          <source src="{{ song.song.url }}" type="audio/mpeg" />
-        </audio>
-
-        <!-- Mobile Hidden Audio -->
-        <audio id="audio{{ forloop.counter }}" class="mobile-audio">
-          <source src="{{ song.song.url }}" type="audio/mpeg" />
-        </audio>
-
-        <!-- Mobile Play Button -->
-        <button
-          class="play-btn"
-          onclick="toggleAudio('audio{{ forloop.counter }}', this)"
-        >
-          ▶ Play
-        </button>
-
-        <!-- Download Button -->
-        <a href="{{ song.song.url }}" download class="download"> Download </a>
+      <div class="section-title">
+        <h2>Latest Uploads</h2>
       </div>
 
-      {% empty %}
+      <div class="audio-grid">
+        {% for song in songs %}
+        <div class="audio-card">
+          {% if song.cover %}
+          <img
+            src="{{ song.cover.url }}"
+            alt="{{ song.name }}"
+            class="cover-image"
+          />
+          {% else %}
+          <div class="no-cover">🎵</div>
+          {% endif %}
 
-      <div class="no-results">No Audio Found</div>
+          <div class="audio-content">
+            <h3>{{ song.name }}</h3>
+            <p class="artist">
+              {% if song.artist %}{{ song.artist }}{% else %}Unknown Artist{% endif %}
+            </p>
+          </div>
 
-      {% endfor %}
+          <div class="player-wrapper">
+            <audio controls>
+              <source src="{{ song.song.url }}" type="audio/mpeg" />
+            </audio>
+          </div>
+
+          <div class="metadata-section">
+            {% if song.category %}
+            <span class="badge">{{ song.category }}</span>
+            {% endif %}
+          </div>
+
+          <div class="action-buttons">
+            <button class="toggle-play-btn" id="toggle-{{ forloop.counter }}" onclick="toggleAudio(this, 'player-{{ forloop.counter }}')">
+              <i class="fas fa-play"></i>
+            </button>
+            <a href="{{ song.song.url }}" download class="download-btn">
+              <i class="fas fa-download"></i>
+            </a>
+          </div>
+
+          <!-- Hidden audio player for mobile play button -->
+          <audio id="player-{{ forloop.counter }}" style="display: none;">
+            <source src="{{ song.song.url }}" type="audio/mpeg" />
+          </audio>
+        </div>
+
+        {% empty %}
+        <div class="empty">
+          <i class="fas fa-music" style="font-size: 3rem; margin-bottom: 20px; color: #00d4ff; display: block;"></i>
+          No songs found.
+        </div>
+        {% endfor %}
+      </div>
     </section>
 
     <footer>
-      <p>© 2026 Pandu The Melophile</p>
+      <p>© 2026 Pandu The Melophile | Made with ❤️</p>
     </footer>
+
     <script>
-      document.querySelectorAll("a").forEach((link) => {
-        link.addEventListener("click", function () {
-          document
-            .getElementById("page-loader")
-            .classList.remove("loader-hidden");
+      // Show/hide clear button based on input value
+      const searchInput = document.getElementById('search-input');
+      const clearBtn = document.querySelector('.clear-btn');
+      
+      if (searchInput && clearBtn) {
+        searchInput.addEventListener('input', function() {
+          clearBtn.style.display = this.value.trim() ? 'flex' : 'none';
         });
-      });
-    </script>
-    <script>
-      let currentAudio = null;
-      let currentButton = null;
-
-      function toggleAudio(audioId, btn) {
-        const audio = document.getElementById(audioId);
-
-        if (currentAudio && currentAudio !== audio) {
-          currentAudio.pause();
-          currentAudio.currentTime = 0;
-
-          if (currentButton) {
-            currentButton.textContent = "▶ Play";
-          }
+        
+        // Show clear button on page load if input has value
+        if (searchInput.value.trim()) {
+          clearBtn.style.display = 'flex';
         }
-
-        if (audio.paused) {
-          audio.play();
-          btn.textContent = "⏸ Pause";
-
-          currentAudio = audio;
-          currentButton = btn;
-        } else {
-          audio.pause();
-          btn.textContent = "▶ Play";
-
-          currentAudio = null;
-          currentButton = null;
-        }
-
-        audio.onended = function () {
-          btn.textContent = "▶ Play";
-          currentAudio = null;
-          currentButton = null;
-        };
       }
     </script>
   </body>

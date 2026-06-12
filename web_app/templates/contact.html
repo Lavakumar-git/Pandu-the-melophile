@@ -1,25 +1,21 @@
 {% load static %}
 
 <!doctype html>
-
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contact | Pandu The Melophile</title>
 
-   
     <link rel="stylesheet" href="{% static 'contact.css' %}" />
-  
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      rel="stylesheet"
+    />
   </head>
   <body>
-  
-    <div id="page-loader">
-      <div class="loader-spinner"></div>
-    </div>
-
     <header>
-      <h1 class="logo">Pandu The Melophile</h1>
+      <div class="logo">🎵 Pandu The Melophile</div>
 
       <nav>
         <a href="/">Home</a>
@@ -30,49 +26,33 @@
     </header>
 
     <section class="contact-section">
-      <div class="container">
-        <div class="text-center">
-          <h2 class="section-title">Get In Touch</h2>
-          <p class="section-subtitle">
-            Feel free to contact me through any of the following platforms.
-          </p>
+      <div class="contact-card">
+        <h1>Contact Us</h1>
+
+        <p>Feel free to connect with us anytime.</p>
+
+        <div class="contact-item">
+          <i class="fas fa-envelope"></i>
+          <span>yourmail@gmail.com</span>
         </div>
 
-        <div class="contact-wrapper">
-          <div class="contact-item">
-            <h3>Email</h3>
-            <p>groovewaveeditz90@egmail.com</p>
-          </div>
+        <div class="contact-item">
+          <i class="fab fa-linkedin"></i>
 
-            <div class="contact-item">
-            <h3>LinkedIn</h3>
-            <a href="https://www.linkedin.com/in/s-lavakumar-645641318/" target="https://www.linkedin.com/in/s-lavakumar-645641318/"> https://www.linkedin.com/in/s-lavakumar-645641318/</a>
-          </div>
+          <a href="https://www.linkedin.com/" target="_blank">
+            LinkedIn Profile
+          </a>
+        </div>
 
-          <div class="contact-item">
-            <h3>Location</h3>
-            <p>India</p>
-          </div>
-
-        
+        <div class="contact-item">
+          <i class="fas fa-location-dot"></i>
+          <span>India</span>
         </div>
       </div>
     </section>
 
     <footer>
-      <p>© 2026 Pandu The Melophile</p>
+      <p>© 2026 Pandu The Melophile | Made with ❤️</p>
     </footer>
-
-    <script>
-      document.querySelectorAll("a").forEach((link) => {
-        link.addEventListener("click", function () {
-          const loader = document.getElementById("page-loader");
-          if (loader) {
-            loader.classList.remove("loader-hidden");
-          }
-        });
-      });
-    </script>
-    ```
   </body>
 </html>

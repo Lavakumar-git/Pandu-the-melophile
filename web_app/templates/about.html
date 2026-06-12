@@ -4,65 +4,50 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <title>About | Pandu The Melophile</title>
 
     <link rel="stylesheet" href="{% static 'about.css' %}" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      rel="stylesheet"
+    />
   </head>
-
   <body>
-    <div id="page-loader">
-      <div class="loader-spinner"></div>
-    </div>
     <header>
-      <h1 class="logo">Pandu The Melophile</h1>
+      <div class="logo">🎵 Pandu The Melophile</div>
 
       <nav>
         <a href="/">Home</a>
-
         <a href="/audios/">Audios</a>
-
         <a href="/about/">About</a>
-
         <a href="/contact/">Contact</a>
       </nav>
     </header>
 
     <section class="about-section">
       <div class="about-card">
-        <h2>About Pandu The Melophile</h2>
+        <h1>About Pandu The Melophile</h1>
 
         <p>
-          Pandu The Melophile is a music platform created for music lovers who
-          enjoy trending BGMs, cinematic tracks and popular audio content.
+          Welcome to Pandu The Melophile, a modern music platform where users
+          can discover, stream, and download their favorite songs.
         </p>
 
         <p>
-          Our mission is to provide a simple and enjoyable way to discover,
-          stream and download quality audio tracks.
+          Our goal is to create a simple, fast, and enjoyable music experience
+          with beautiful design and smooth performance across all devices.
         </p>
 
         <p>
-          Whether you are searching for trending music or cinematic soundtracks,
-          we aim to bring them together in one place.
+          Browse songs by category, explore new releases, and enjoy high-quality
+          audio anytime.
         </p>
       </div>
     </section>
 
     <footer>
-      <p>© 2026 Pandu The Melophile</p>
+      <p>© 2026 Pandu The Melophile | Made with ❤️</p>
     </footer>
-
-    <script>
-      document.querySelectorAll("a").forEach((link) => {
-        link.addEventListener("click", function () {
-          document
-            .getElementById("page-loader")
-            .classList.remove("loader-hidden");
-        });
-      });
-    </script>
   </body>
 </html>

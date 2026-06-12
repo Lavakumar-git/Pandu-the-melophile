@@ -1,47 +1,59 @@
 from django.shortcuts import render
 from .models import Audio
-from django.core.mail import send_mail
-from django.conf import settings
 
-
-# HOME PAGE
 
 def homepage(request):
-
     query = request.GET.get('q', '')
 
     if query:
         songs = Audio.objects.filter(name__icontains=query)
     else:
-        songs = Audio.objects.all()
+        songs = Audio.objects.all().order_by('-uploaded_at')
 
-    return render(request,'homepage.html',
-        {
-            'songs': songs,
-            'query': query
-        }
-    )
+    latest_songs = Audio.objects.all().order_by('-uploaded_at')[:8]
 
+    categories = Audio.objects.values_list(
+        'category',
+        flat=True
+    ).distinct()
 
-# AUDIOS PAGE
+    context = {
+        'songs': songs,
+        'query': query,
+        'latest_songs': latest_songs,
+        'categories': categories,
+    }
+
+    return render(request, 'homepage.html', context)
+
 
 def audios(request):
+    category = request.GET.get('category')
 
-    songs = Audio.objects.all()
+    if category:
+        songs = Audio.objects.filter(
+            category__iexact=category
+        ).order_by('-uploaded_at')
+    else:
+        songs = Audio.objects.all().order_by('-uploaded_at')
 
-    return render(request,'audios.html',
-        {
-            'songs': songs
-        }
-    )
+    categories = Audio.objects.values_list(
+        'category',
+        flat=True
+    ).distinct()
 
+    context = {
+        'songs': songs,
+        'categories': categories,
+        'selected_category': category,
+    }
 
-# ABOUT PAGE
+    return render(request, 'audios.html', context)
+
 
 def about(request):
-
-    return render(request,'about.html')
+    return render(request, 'about.html')
 
 
 def contact(request):
-   return render(request,'contact.html')
+    return render(request, 'contact.html')
