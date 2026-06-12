@@ -229,8 +229,8 @@ audio {
   gap: 4px;
   flex: 0 0 auto;
 }
-
-.play-btn {
+.play-pause-btn,
+.download-btn{
   display: none;
   padding: 8px 12px;
   border: none;
@@ -243,28 +243,13 @@ audio {
   white-space: nowrap;
 }
 
-.play-btn:hover {
+
+.play-pause-btn,
+.download-btn:hover {
   transform: scale(1.1);
   box-shadow: 0 0 15px rgba(0, 212, 255, 0.3);
 }
 
-.pause-btn {
-  display: none;
-  padding: 8px 12px;
-  border: none;
-  border-radius: 6px;
-  background: linear-gradient(135deg, #ff6b6b, #ee5a6f);
-  color: white;
-  font-weight: 600;
-  cursor: pointer;
-  transition: 0.3s ease;
-  white-space: nowrap;
-}
-
-.pause-btn:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 15px rgba(255, 107, 107, 0.3);
-}
 
 .download-btn {
   text-decoration: none;
@@ -504,8 +489,25 @@ footer {
     font-size: 0.8rem;
   }
 
-  .download-btn {
-    padding: 8px 12px;
-    font-size: 0.8rem;
-  }
+  .play-pause-btn,
+.download-btn{
+  display: none;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 6px;
+  background: linear-gradient(135deg, #00d4ff, #7c3aed);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
+  white-space: nowrap;
+}
+
+
+.play-pause-btn,
+.download-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 15px rgba(0, 212, 255, 0.3);
+}
+
 }
