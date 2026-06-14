@@ -71,13 +71,21 @@
         {% for song in songs %}
         <div class="audio-card">
           {% if song.cover %}
-          <img
-            src="{{ song.cover.url }}"
-            alt="{{ song.name }}"
-            class="cover-image"
-          />
+          <div class="cover-image">
+            <img src="{{ song.cover.url }}" alt="{{ song.name }}" />
+            <!-- Play/Pause button overlay -->
+            <button class="play-btn" onclick="toggleAudio('player-{{ forloop.counter }}', this)">
+              <i class="fas fa-play"></i>
+            </button>
+          </div>
           {% else %}
-          <div class="no-cover">🎵</div>
+          <div class="no-cover">
+            🎵
+            <!-- Play/Pause button overlay -->
+            <button class="play-btn" onclick="toggleAudio('player-{{ forloop.counter }}', this)">
+              <i class="fas fa-play"></i>
+            </button>
+          </div>
           {% endif %}
 
           <div class="audio-content">
@@ -88,7 +96,7 @@
           </div>
 
           <div class="player-wrapper">
-            <audio controls>
+            <audio id="player-{{ forloop.counter }}" controls style="display:none;">
               <source src="{{ song.song.url }}" type="audio/mpeg" />
             </audio>
           </div>
@@ -100,18 +108,10 @@
           </div>
 
           <div class="action-buttons">
-            <button class="toggle-play-btn" id="toggle-{{ forloop.counter }}" onclick="toggleAudio(this, 'player-{{ forloop.counter }}')">
-              <i class="fas fa-play"></i>
-            </button>
             <a href="{{ song.song.url }}" download class="download-btn">
               <i class="fas fa-download"></i>
             </a>
           </div>
-
-          <!-- Hidden audio player for mobile play button -->
-          <audio id="player-{{ forloop.counter }}" style="display: none;">
-            <source src="{{ song.song.url }}" type="audio/mpeg" />
-          </audio>
         </div>
 
         {% empty %}
@@ -128,6 +128,32 @@
     </footer>
 
     <script>
+      function toggleAudio(playerId, button) {
+        const audio = document.getElementById(playerId);
+        const icon = button.querySelector("i");
+
+        // Pause all other players
+        document.querySelectorAll("audio").forEach(a => {
+          if (a.id !== playerId) {
+            a.pause();
+          }
+        });
+        document.querySelectorAll(".play-btn i").forEach(i => {
+          i.classList.remove("fa-pause");
+          i.classList.add("fa-play");
+        });
+
+        if (audio.paused) {
+          audio.play();
+          icon.classList.remove("fa-play");
+          icon.classList.add("fa-pause");
+        } else {
+          audio.pause();
+          icon.classList.remove("fa-pause");
+          icon.classList.add("fa-play");
+        }
+      }
+
       // Show/hide clear button based on input value
       const searchInput = document.getElementById('search-input');
       const clearBtn = document.querySelector('.clear-btn');
@@ -136,8 +162,6 @@
         searchInput.addEventListener('input', function() {
           clearBtn.style.display = this.value.trim() ? 'flex' : 'none';
         });
-        
-        // Show clear button on page load if input has value
         if (searchInput.value.trim()) {
           clearBtn.style.display = 'flex';
         }

@@ -7,8 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Audios - Pandu The Melophile</title>
 
-    <link rel="stylesheet" href="{% static 'audios.css' %}" />
-
+      <link rel="stylesheet" href="{% static 'audios.css' %}" />
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
       rel="stylesheet"
@@ -31,26 +30,47 @@
       <p>Listen to your favorite tracks anytime.</p>
     </section>
 
+    <!-- Search bar added -->
+    <section class="search-box">
+      <form method="GET" id="search-form">
+        <input
+          type="text"
+          name="q"
+          placeholder="Search songs..."
+          value="{{ query }}"
+          id="search-input"
+        />
+        <button type="submit" class="search-btn">
+          <i class="fas fa-search"></i>
+        </button>
+        <button type="button" class="clear-btn"
+          onclick="document.getElementById('search-input').value = ''; document.getElementById('search-form').reset();"
+          style="display: none;">
+          <i class="fas fa-times"></i>
+        </button>
+      </form>
+    </section>
+
     <section class="audio-section">
       <div class="audio-grid">
         {% for song in songs %}
         <div class="audio-card">
           {% if song.cover %}
-          <img
-            src="{{ song.cover.url }}"
-            alt="{{ song.name }}"
-            class="cover-image"
-          />
+          <img src="{{ song.cover.url }}" alt="{{ song.name }}" class="cover-image" />
           {% else %}
-          <div class="no-cover">🎵</div>
+          <div class="no-cover">
+            🎵
+            <!-- Play/Pause button inside no-cover -->
+            <button class="toggle-play-btn" onclick="toggleAudio('player-{{ forloop.counter }}', this)">
+              <i class="fas fa-play"></i>
+            </button>
+          </div>
           {% endif %}
 
           <div class="audio-content">
             <h3>{{ song.name }}</h3>
-
             <p class="artist">
-              {% if song.artist %}{{ song.artist }}{% else %}Unknown Artist{%
-              endif %}
+              {% if song.artist %}{{ song.artist }}{% else %}Unknown Artist{% endif %}
             </p>
           </div>
 
@@ -67,13 +87,6 @@
           </div>
 
           <div class="action-buttons">
-            <button
-              class="play-pause-btn"
-              onclick="toggleAudio('player-{{ forloop.counter }}', this)"
-            >
-              <i class="fas fa-play"></i>
-            </button>
-
             <a href="{{ song.song.url }}" download class="download-btn">
               <i class="fas fa-download"></i>
             </a>
@@ -84,19 +97,6 @@
             <source src="{{ song.song.url }}" type="audio/mpeg" />
           </audio>
         </div>
-        {% endif %} 
-        <div class="empty">
-          <i
-            class="fas fa-music"
-            style="
-              font-size: 3rem;
-              margin-bottom: 20px;
-              color: #00d4ff;
-              display: block;
-            "
-          ></i>
-          No songs available.
-        </div>
         {% endfor %}
       </div>
     </section>
@@ -106,7 +106,7 @@
     </footer>
 
     <script>
-      function toggleAudio(playerId, button) {
+      function toggleAudio(playerId, button) 
         const audio = document.getElementById(playerId);
         const icon = button.querySelector("i");
 
@@ -114,12 +114,8 @@
           audio.play();
           icon.classList.remove("fa-play");
           icon.classList.add("fa-pause");
-        } else {
+          } else {  
           audio.pause();
-          icon.classList.remove("fa-pause");
+          icon.classList.remove("fa-pause");  
           icon.classList.add("fa-play");
         }
-      }
-    </script>
-  </body>
-</html>
