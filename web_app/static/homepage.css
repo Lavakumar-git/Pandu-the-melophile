@@ -296,7 +296,7 @@ nav a:hover { color: #00d4ff; }
   flex-direction: column; /* keep text stacked inside */
   gap: 6px;
 }
-.footer p{
+.footer {
   text-align: center;
   padding: 20px;
   color: #555;
