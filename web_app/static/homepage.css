@@ -301,6 +301,8 @@ nav a:hover { color: #00d4ff; }
   padding: 20px;
   color: #555;
   display: block;
+  justify-content: bottom;
+
 }
 
 /* Responsive - stack cards on small screens */

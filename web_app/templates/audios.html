@@ -1,54 +1,65 @@
 {% load static %}
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Audios - Pandu The Melophile</title>
 
-      <link rel="stylesheet" href="{% static 'audios.css' %}" />
+    <link rel="stylesheet" href="{% static 'audios.css' %}">
     <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <header>
-      <div class="logo">🎵 Pandu The Melophile</div>
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        rel="stylesheet"
+    >
+</head>
 
-      <nav>
-        <a href="/">Home</a>
-        <a href="/audios/">Audios</a>
-        <a href="/about/">About</a>
-        <a href="/contact/">Contact</a>
-      </nav>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">Pandu The Melophile</div>
+
+        <nav>
+            <a href="/">Home</a>
+            <a href="/audios/">Audios</a>
+            <a href="/about/">About</a>
+            <a href="/contact/">Contact</a>
+        </nav>
     </header>
 
+    <!-- Hero -->
     <section class="hero">
-      <h1>All Songs</h1>
-      <p>Listen to your favorite tracks anytime.</p>
+        <h1>All Songs</h1>
+        <p>Listen to your favorite tracks anytime.</p>
     </section>
 
-    <!-- Search bar added -->
+    <!-- Search -->
     <section class="search-box">
-      <form method="GET" id="search-form">
-        <input
-          type="text"
-          name="q"
-          placeholder="Search songs..."
-          value="{{ query }}"
-          id="search-input"
-        />
-        <button type="submit" class="search-btn">
-          <i class="fas fa-search"></i>
-        </button>
-        <button type="button" class="clear-btn"
-          onclick="document.getElementById('search-input').value = ''; document.getElementById('search-form').reset();"
-          style="display: none;">
-          <i class="fas fa-times"></i>
-        </button>
-      </form>
+        <form method="GET" id="search-form">
+
+            <input
+                type="text"
+                name="q"
+                id="search-input"
+                placeholder="Search songs..."
+                value="{{ query }}"
+            >
+
+            <button type="submit" class="search-btn">
+                <i class="fas fa-search"></i>
+            </button>
+
+            <button
+                type="button"
+                class="clear-btn"
+                id="clear-btn"
+                style="display:none;"
+            >
+                <i class="fas fa-times"></i>
+            </button>
+
+        </form>
     </section>
 
     <section class="audio-section">
@@ -56,12 +67,18 @@
         {% for song in songs %}
         <div class="audio-card">
           {% if song.cover %}
-          <img src="{{ song.cover.url }}" alt="{{ song.name }}" class="cover-image" />
+          <div class="cover-image">
+            <img src="{{ song.cover.url }}" alt="{{ song.name }}" />
+            <!-- Play/Pause button overlay -->
+            <button class="play-btn" onclick="toggleAudio('player-{{ forloop.counter }}', this)">
+              <i class="fas fa-play"></i>
+            </button>
+          </div>
           {% else %}
           <div class="no-cover">
             🎵
-            <!-- Play/Pause button inside no-cover -->
-            <button class="toggle-play-btn" onclick="toggleAudio('player-{{ forloop.counter }}', this)">
+            <!-- Play/Pause button overlay -->
+            <button class="play-btn" onclick="toggleAudio('player-{{ forloop.counter }}', this)">
               <i class="fas fa-play"></i>
             </button>
           </div>
@@ -75,7 +92,7 @@
           </div>
 
           <div class="player-wrapper">
-            <audio controls>
+            <audio id="player-{{ forloop.counter }}" controls style="display:none;">
               <source src="{{ song.song.url }}" type="audio/mpeg" />
             </audio>
           </div>
@@ -91,31 +108,60 @@
               <i class="fas fa-download"></i>
             </a>
           </div>
+        </div>
 
-          <!-- Hidden audio player for mobile play button -->
-          <audio id="player-{{ forloop.counter }}" style="display: none">
-            <source src="{{ song.song.url }}" type="audio/mpeg" />
-          </audio>
+        {% empty %}
+        <div class="empty">
+          <i class="fas fa-music" style="font-size: 3rem; margin-bottom: 20px; color: #00d4ff; display: block;"></i>
+          No songs found.
         </div>
         {% endfor %}
       </div>
     </section>
 
-    <footer>
+    <footer class="footer">
       <p>© 2026 Pandu The Melophile | Made with ❤️</p>
     </footer>
 
     <script>
-      function toggleAudio(playerId, button) 
+      function toggleAudio(playerId, button) {
         const audio = document.getElementById(playerId);
         const icon = button.querySelector("i");
+
+        // Pause all other players
+        document.querySelectorAll("audio").forEach(a => {
+          if (a.id !== playerId) {
+            a.pause();
+          }
+        });
+        document.querySelectorAll(".play-btn i").forEach(i => {
+          i.classList.remove("fa-pause");
+          i.classList.add("fa-play");
+        });
 
         if (audio.paused) {
           audio.play();
           icon.classList.remove("fa-play");
           icon.classList.add("fa-pause");
-          } else {  
+        } else {
           audio.pause();
-          icon.classList.remove("fa-pause");  
+          icon.classList.remove("fa-pause");
           icon.classList.add("fa-play");
         }
+      }
+
+      // Show/hide clear button based on input value
+      const searchInput = document.getElementById('search-input');
+      const clearBtn = document.querySelector('.clear-btn');
+      
+      if (searchInput && clearBtn) {
+        searchInput.addEventListener('input', function() {
+          clearBtn.style.display = this.value.trim() ? 'flex' : 'none';
+        });
+        if (searchInput.value.trim()) {
+          clearBtn.style.display = 'flex';
+        }
+      }
+    </script>
+</body>
+</html>
